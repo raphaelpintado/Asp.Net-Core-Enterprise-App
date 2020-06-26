@@ -1,0 +1,22 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/NerdStoreEnterprise/.vs
+/NerdStoreEnterprise/src/building blocks/NSE.Core/bin/Debug/netcoreapp3.1
+/NerdStoreEnterprise/src/building blocks/NSE.Core/obj
+/NerdStoreEnterprise/src/services/NSE.Carrinho.API/bin/Debug/netcoreapp3.1
+/NerdStoreEnterprise/src/services/NSE.Carrinho.API/obj
+/NerdStoreEnterprise/src/services/NSE.Catalogo.API/bin/Debug/netcoreapp3.1
+/NerdStoreEnterprise/src/services/NSE.Catalogo.API/obj
+/NerdStoreEnterprise/src/services/NSE.Cliente.API/bin/Debug/netcoreapp3.1
+/NerdStoreEnterprise/src/services/NSE.Cliente.API/obj
+/NerdStoreEnterprise/src/services/NSE.Identidade.API/bin/Debug/netcoreapp3.1
+/NerdStoreEnterprise/src/services/NSE.Identidade.API/obj
+/NerdStoreEnterprise/src/services/NSE.Pagamento.API/bin/Debug/netcoreapp3.1
+/NerdStoreEnterprise/src/services/NSE.Pagamento.API/obj
+/NerdStoreEnterprise/src/services/NSE.Pedido.API/bin/Debug/netcoreapp3.1
+/NerdStoreEnterprise/src/services/NSE.Pedido.API/obj
+/NerdStoreEnterprise/src/web/NSE.WebApp.MVC/bin/Debug/netcoreapp3.1
+/NerdStoreEnterprise/src/web/NSE.WebApp.MVC/obj
