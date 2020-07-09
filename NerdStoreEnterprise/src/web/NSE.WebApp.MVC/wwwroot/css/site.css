@@ -71,8 +71,8 @@ body {
 }
 
 input,
-select, 
-color-profile,
+select,
+file,
 textarea {
     max-width: 400px;
 }
