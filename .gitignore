@@ -20,3 +20,5 @@
 /NerdStoreEnterprise/src/services/NSE.Pedido.API/obj
 /NerdStoreEnterprise/src/web/NSE.WebApp.MVC/bin/Debug/netcoreapp3.1
 /NerdStoreEnterprise/src/web/NSE.WebApp.MVC/obj
+/NerdStoreEnterprise/src/building blocks/NSE.WebAPI.Core/bin/Debug/netcoreapp3.1
+/NerdStoreEnterprise/src/building blocks/NSE.WebAPI.Core/obj

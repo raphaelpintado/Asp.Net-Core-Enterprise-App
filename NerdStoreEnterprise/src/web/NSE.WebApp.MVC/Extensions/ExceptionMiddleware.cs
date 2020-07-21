@@ -25,15 +25,15 @@ namespace NSE.WebApp.MVC.Extensions
             }
         }
 
-        private static void HandleRequestExceptionAsync(HttpContext context, CustomHttpRequestException httpResquestException)
+        private static void HandleRequestExceptionAsync(HttpContext context, CustomHttpRequestException httpRequestException)
         {
-            if (httpResquestException.StatusCode == HttpStatusCode.Unauthorized)
+            if (httpRequestException.StatusCode == HttpStatusCode.Unauthorized)
             {
                 context.Response.Redirect($"/login?ReturnUrl={context.Request.Path}");
                 return;
             }
 
-            context.Response.StatusCode = (int)httpResquestException.StatusCode;
+            context.Response.StatusCode = (int)httpRequestException.StatusCode;
         }
     }
 }
