@@ -29,7 +29,7 @@ namespace NSE.WebApp.MVC.Configuration
             //    app.UseHsts();
             //}
 
-            app.UseExceptionHandler("/erro/500");
+            app.UseExceptionHandler("/error/500");
             app.UseStatusCodePagesWithRedirects("/error/{0}");
             app.UseHsts();
 
