@@ -1,8 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NSE.Cliente.API.Models;
 using NSE.Core.Data;
-using System;
-using System.Collections.Generic;
+using NSE.Core.Messages;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
@@ -36,9 +35,11 @@ namespace NSE.Cliente.API.Data
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ClienteContext).Assembly);
         }
 
-        public Task<bool> Commit()
+        public async Task<bool> Commit()
         {
-            throw new NotImplementedException();
+            var sucesso = await base.SaveChangesAsync() > 0;
+
+            return sucesso;
         }
     }
 
