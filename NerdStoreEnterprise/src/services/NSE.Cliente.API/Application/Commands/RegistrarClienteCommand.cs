@@ -1,7 +1,6 @@
 ﻿using FluentValidation;
 using NSE.Core.Messages;
 using System;
-using System.Data;
 
 namespace NSE.Cliente.API.Application.Commands
 {
