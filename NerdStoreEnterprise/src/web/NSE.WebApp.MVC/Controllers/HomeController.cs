@@ -4,7 +4,8 @@ using NSE.WebApp.MVC.Models;
 namespace NSE.WebApp.MVC.Controllers
 {
     public class HomeController : Controller
-    {               
+    {   
+        [HttpGet]
         [Route("sistema-indisponivel")]
         public IActionResult SistemaIndisponivel()
         {
@@ -18,6 +19,7 @@ namespace NSE.WebApp.MVC.Controllers
             return View("Error", modelErro);
         }
 
+        [HttpGet]
         [Route("error/{id:length(3,3)}")]
         public IActionResult Error(int id)
         {

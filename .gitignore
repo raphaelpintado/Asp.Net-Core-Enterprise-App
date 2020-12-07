@@ -24,3 +24,5 @@
 /NerdStoreEnterprise/src/building blocks/NSE.WebAPI.Core/obj
 /NerdStoreEnterprise/src/building blocks/NSE.MessageBus/bin/Debug/netcoreapp3.1
 /NerdStoreEnterprise/src/building blocks/NSE.MessageBus/obj
+/NerdStoreEnterprise/src/api gateways/NSE.Bff.Compras/bin/Debug/netcoreapp3.1
+/NerdStoreEnterprise/src/api gateways/NSE.Bff.Compras/obj

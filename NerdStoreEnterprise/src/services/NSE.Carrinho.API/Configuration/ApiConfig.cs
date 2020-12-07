@@ -18,15 +18,15 @@ namespace NSE.Carrinho.API.Configuration
 
             services.AddControllers();
 
-            //services.AddCors(options =>
-            //{
-            //    options.AddPolicy("Total",
-            //        builder =>
-            //            builder
-            //                .AllowAnyOrigin()
-            //                .AllowAnyMethod()
-            //                .AllowAnyHeader());
-            //});
+            services.AddCors(options =>
+            {
+                options.AddPolicy("Total",
+                    builder =>
+                        builder
+                            .AllowAnyOrigin()
+                            .AllowAnyMethod()
+                            .AllowAnyHeader());
+            });
         }
 
         public static void UseApiConfiguration(this IApplicationBuilder app, IWebHostEnvironment env)
@@ -40,7 +40,7 @@ namespace NSE.Carrinho.API.Configuration
 
             app.UseRouting();
 
-            //app.UseCors("Total");
+            app.UseCors("Total");
 
             app.UseAuthConfiguration();
 

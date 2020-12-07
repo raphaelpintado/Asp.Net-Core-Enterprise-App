@@ -29,7 +29,7 @@ namespace NSE.Carrinho.API.Controllers
             return await ObterCarrinhoCliente() ?? new CarrinhoCliente();
         }
 
-        [HttpGet("carrinho")]
+        [HttpPost("carrinho")]
         public async Task<IActionResult> AdicionarItemCarrinho(CarrinhoItem item)
         {
             var carrinho = await ObterCarrinhoCliente();
@@ -38,41 +38,13 @@ namespace NSE.Carrinho.API.Controllers
                 ManipularNovoCarrinho(item);
             else
                 ManipularCarrinhoExistente(carrinho, item);
-
-            ValidarCarrinho(carrinho);
+            
             if (!OperacaoValida())
                 return CustomResponse();
 
             await PersistirDados();
-
             return CustomResponse();
-        }        
-
-        private void ManipularNovoCarrinho(CarrinhoItem item)
-        {
-            var carrinho = new CarrinhoCliente(_user.ObterUserId());
-            carrinho.AdicionarItem(item);
-
-            _context.CarrinhoCliente.Add(carrinho);
-        }
-
-        private void ManipularCarrinhoExistente(CarrinhoCliente carrinho, CarrinhoItem item)
-        {
-            var produtoItemExistente = carrinho.CarrinhoItemExistente(item);
-
-            carrinho.AdicionarItem(item);
-
-            if(produtoItemExistente)
-            {
-                _context.CarrinhoItens.Update(carrinho.ObterPorProdutoId(item.ProdutoId));
-            }
-            else
-            {
-                _context.CarrinhoItens.Add(item);
-            }
-
-            _context.CarrinhoCliente.Update(carrinho);
-        }
+        }                
 
         [HttpPut("carrinho/{produtoId}")]
         public async Task<IActionResult> AtualizarItemCarrinho(Guid produtoId, CarrinhoItem item)
@@ -97,6 +69,7 @@ namespace NSE.Carrinho.API.Controllers
             return CustomResponse();
         }
 
+        [HttpDelete("carrinho/{produtoId}")]
         public async Task<IActionResult> RemoverItemCarrinho(Guid produtoId)
         {
             var carrinho = await ObterCarrinhoCliente();
@@ -116,6 +89,34 @@ namespace NSE.Carrinho.API.Controllers
 
             await PersistirDados();
             return CustomResponse();
+        }
+
+        private void ManipularNovoCarrinho(CarrinhoItem item)
+        {
+            var carrinho = new CarrinhoCliente(_user.ObterUserId());
+            carrinho.AdicionarItem(item);
+
+            ValidarCarrinho(carrinho);
+            _context.CarrinhoCliente.Add(carrinho);
+        }
+
+        private void ManipularCarrinhoExistente(CarrinhoCliente carrinho, CarrinhoItem item)
+        {
+            var produtoItemExistente = carrinho.CarrinhoItemExistente(item);
+
+            carrinho.AdicionarItem(item);
+            ValidarCarrinho(carrinho);
+
+            if (produtoItemExistente)
+            {
+                _context.CarrinhoItens.Update(carrinho.ObterPorProdutoId(item.ProdutoId));
+            }
+            else
+            {
+                _context.CarrinhoItens.Add(item);
+            }
+
+            _context.CarrinhoCliente.Update(carrinho);
         }
 
         private async Task<CarrinhoCliente> ObterCarrinhoCliente()
