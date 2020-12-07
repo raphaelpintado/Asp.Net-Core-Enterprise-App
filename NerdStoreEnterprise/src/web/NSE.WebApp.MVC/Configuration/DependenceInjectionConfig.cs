@@ -60,7 +60,7 @@ namespace NSE.WebApp.MVC.Configuration
         }
     }
 
-    public class PollyExtensions
+    public static class PollyExtensions
     {
         public static AsyncRetryPolicy<HttpResponseMessage> EsperarTentar()
         {
