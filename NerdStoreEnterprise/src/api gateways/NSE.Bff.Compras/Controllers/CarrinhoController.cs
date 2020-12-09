@@ -43,7 +43,7 @@ namespace NSE.Bff.Compras.Controllers
         {
             var produto = await _catalogoService.ObterPorId(itemProduto.ProdutoId);
 
-            await ValidarItemCarrinho(produto, itemProduto.Quantidade);
+            await ValidarItemCarrinho(produto, itemProduto.Quantidade, true);
             if (!OperacaoValida())
                 return CustomResponse();
 
@@ -87,7 +87,7 @@ namespace NSE.Bff.Compras.Controllers
             return CustomResponse(resposta);
         }
 
-        private async Task ValidarItemCarrinho(ItemProdutoDTO produto, int quantidade)
+        private async Task ValidarItemCarrinho(ItemProdutoDTO produto, int quantidade, bool novoItem = false)
         {
             if (produto == null)
                 AdicionarErroProcessamento("Produto inexistente!");
@@ -95,13 +95,16 @@ namespace NSE.Bff.Compras.Controllers
             if (quantidade < 1)
                 AdicionarErroProcessamento($"Escolha ao menos uma unidade do produto {produto.Nome}");
 
-            var carrinho = await _carrinhoService.ObterCarrinho();
-            var itemCarrinho = carrinho.Itens.FirstOrDefault(p => p.ProdutoId == produto.Id);
-
-            if (itemCarrinho != null && itemCarrinho.Quantidade + quantidade > produto.QuantidadeEstoque)
+            if (novoItem)
             {
-                AdicionarErroProcessamento($"O produto {produto.Nome} possui {produto.QuantidadeEstoque} unidades em estoque, você selecionou {quantidade}");
-                return;
+                var carrinho = await _carrinhoService.ObterCarrinho();
+                var itemCarrinho = carrinho.Itens.FirstOrDefault(p => p.ProdutoId == produto.Id);
+
+                if (itemCarrinho != null && itemCarrinho.Quantidade + quantidade > produto.QuantidadeEstoque)
+                {
+                    AdicionarErroProcessamento($"O produto {produto.Nome} possui {produto.QuantidadeEstoque} unidades em estoque, você selecionou {quantidade}");
+                    return;
+                }
             }
 
             if (quantidade > produto.QuantidadeEstoque)
