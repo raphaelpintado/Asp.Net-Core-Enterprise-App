@@ -26,3 +26,7 @@
 /NerdStoreEnterprise/src/building blocks/NSE.MessageBus/obj
 /NerdStoreEnterprise/src/api gateways/NSE.Bff.Compras/bin/Debug/netcoreapp3.1
 /NerdStoreEnterprise/src/api gateways/NSE.Bff.Compras/obj
+/NerdStoreEnterprise/src/services/NSE.Pedidos.Infra/obj
+/NerdStoreEnterprise/src/services/NSE.Pedidos.Domain/bin/Debug/netcoreapp3.1
+/NerdStoreEnterprise/src/services/NSE.Pedidos.Domain/obj
+/NerdStoreEnterprise/src/services/NSE.Pedidos.Infra/bin/Debug/netcoreapp3.1
