@@ -7,7 +7,8 @@
   <ItemGroup>
     <PackageReference Include="FluentValidation" Version="9.1.2" />
     <PackageReference Include="mediatr" Version="8.1.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.7" />    
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.7" />
+    <PackageReference Include="NetDevPack" Version="1.1.0" />    
   </ItemGroup>
 
 </Project>
