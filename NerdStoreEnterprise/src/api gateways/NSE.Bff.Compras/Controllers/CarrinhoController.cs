@@ -31,7 +31,7 @@ namespace NSE.Bff.Compras.Controllers
         }
 
         [HttpGet]
-        [Route("compras/carrinho-quantidade")]
+        [Route("compras/carrinho/carrinho-quantidade")]
         public async Task<int> ObterQuantidadeCarrinho()
         {
             var quantidade = await _carrinhoService.ObterCarrinho();
@@ -88,6 +88,8 @@ namespace NSE.Bff.Compras.Controllers
             return CustomResponse(resposta);
         }
 
+        [HttpPost]
+        [Route("compras/carrinho/aplicar-voucher")]
         public async Task<IActionResult> AplicarVoucher([FromBody] string voucherCodigo)
         {
             var voucher = await _pedidoService.ObterVoucherPorCodigo(voucherCodigo);

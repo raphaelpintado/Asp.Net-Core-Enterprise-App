@@ -29,7 +29,7 @@ namespace NSE.WebApp.MVC.Services
 
         public async Task<int> ObterQuantidadeCarrinho()
         {
-            var response = await _httpClient.GetAsync("/compras/carrinho-quantidade/");
+            var response = await _httpClient.GetAsync("compras/carrinho/carrinho-quantidade");
 
             TratarErrosResponse(response);
 
@@ -68,6 +68,18 @@ namespace NSE.WebApp.MVC.Services
                 return await DeserializarObjetoResponse<ResponseResult>(response);
 
             return RetornoOk();
-        }        
+        }
+
+        public async Task<ResponseResult> AplicarVoucherCarrinho(string voucher)
+        {
+            var itemContent = ObterConteudo(voucher);
+
+            var response = await _httpClient.PostAsync("/compras/carrinho/aplicar-voucher/", itemContent);
+
+            if (!TratarErrosResponse(response))
+                return await DeserializarObjetoResponse<ResponseResult>(response);
+
+            return RetornoOk();
+        }
     }
 }
